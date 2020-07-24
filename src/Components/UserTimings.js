@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import user from '../Data/Test.json';
 import {Modal,Button} from 'react-bootstrap' 
 function UserTimings() {
-    const [data, setData] = useState([...user.members]);
+    const [data, setData] = useState([]);
     const [show, setShow] = useState(false);
     const [timings, setTimings] = useState([])
     const [timings2, setTimings2] = useState([])
@@ -10,7 +10,9 @@ function UserTimings() {
     const [givenDate, setGivenDate] = useState()
     const [fname, setFname] = useState()
 
-
+useEffect(() => {
+  setData([...user.members])
+}, [])
 const getData=(x,y)=>{
    // console.log(x.activity_periods,"i am here");
     setTimings2(x.activity_periods);
